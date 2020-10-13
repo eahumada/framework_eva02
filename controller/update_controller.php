@@ -42,7 +42,7 @@ if(empty($_POST['codigo'])){
 
     $bodega_crud =  new bodega_crud();
 
-    $filas = $bodega_crud->insertar_producto($producto);
+    $filas = $bodega_crud->update_producto($producto);
 
     echo "<br>Insertados # $filas productos";
     

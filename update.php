@@ -16,7 +16,7 @@ include 'plantilla.top.php';
           <!-- /.card-header -->
           <div class="card-body table-responsive p-10">
 
-          <form class="form-horizontal">
+          <form class="form-horizontal" method="POST" action="controller/delete_controller.php">
             <fieldset>
 
             <!-- Form Name -->

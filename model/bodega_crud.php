@@ -47,6 +47,20 @@ class bodega_crud
         mysqli_close($link);
     }
 
+    public function update_producto($producto) // parametros de la funcion.
+    {
+        $query = "update producto set codigo='$producto->codigo', nombre='$producto->nombre',cantidad=$producto->cantidad,precio=$producto->precio) where id=$producto->id)";
+        $link = conexion::conecta(); // llamamos a un metodo de otro metodo, SELF, llama a un metodo dentro de la misma clase.
+        // Nombre de clase cuando es otra clase.
+        mysqli_query($link, $query) or die(mysqli_error($link));
+
+        $nfilas = mysqli_affected_rows($link);
+
+        return $nfilas; // devuelve el numero de filas insertadas.
+
+        mysqli_close($link);
+    }    
+
     public function buscar_codigo($codigo)
     {
         $query = "";
