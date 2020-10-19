@@ -48,7 +48,7 @@ class bodega_crud
 
     public function insertar_producto($producto) // parametros de la funcion.
     {
-        $query = "insert into producto(codigo,nombre,id_sucursal,id_categoria,cantidad,precio) values ('$producto->codigo','$producto->nombre',$producto->id_sucursal,$producto->id_categoria,$producto->cantidad,$producto->precio)";
+        $query = "insert into producto(codigo,nombre,id_sucursal,id_categoria,cantidad,precio,descripcion) values ('$producto->codigo','$producto->nombre',$producto->id_sucursal,$producto->id_categoria,$producto->cantidad,$producto->precio,$producto->descripcion)";
         $link = conexion::conecta(); // llamamos a un metodo de otro metodo, SELF, llama a un metodo dentro de la misma clase.
         // Nombre de clase cuando es otra clase.
         mysqli_query($link, $query) or die(mysqli_error($link));
@@ -62,7 +62,7 @@ class bodega_crud
 
     public function update_producto($producto) // parametros de la funcion.
     {
-        $query = "update producto set codigo='$producto->codigo', nombre='$producto->nombre',cantidad=$producto->cantidad,precio=$producto->precio) where id=$producto->id)";
+        $query = "update producto set codigo='$producto->codigo', nombre='$producto->nombre', descripcion='$producto->descripcion',cantidad=$producto->cantidad,precio=$producto->precio where (id_producto=$producto->id)";
         $link = conexion::conecta(); // llamamos a un metodo de otro metodo, SELF, llama a un metodo dentro de la misma clase.
         // Nombre de clase cuando es otra clase.
         mysqli_query($link, $query) or die(mysqli_error($link));
@@ -77,7 +77,7 @@ class bodega_crud
     public function buscar_codigo($codigo)
     {
         $query = "";
-        $query .= "select a.id_producto, a.codigo,a.nombre,a.id_sucursal,b.nombre_sucursal,c.nombre_categoria,a.id_categoria,a.cantidad,a.precio,a.estado ";
+        $query .= "select a.id_producto, a.codigo,a.nombre,a.id_sucursal,b.nombre_sucursal,c.nombre_categoria,a.id_categoria,a.cantidad,a.precio,a.estado,a.descripcion ";
         $query .= " from producto a ";
         $query .= " inner join sucursal b on (a.id_sucursal=b.id_sucursal) ";
         $query .= " inner join categoria c on (a.id_categoria=c.id_categoria) ";
@@ -95,7 +95,7 @@ class bodega_crud
     public function buscar_nombre($nombre)
     {
         $query = "";
-        $query .= "select a.id_producto, a.codigo,a.nombre,a.id_sucursal,b.nombre_sucursal,c.nombre_categoria,a.id_categoria,a.cantidad,a.precio,a.estado ";
+        $query .= "select a.id_producto, a.codigo,a.nombre,a.id_sucursal,b.nombre_sucursal,c.nombre_categoria,a.id_categoria,a.cantidad,a.precio,a.estado,a.descripcion ";
         $query .= " from producto a ";
         $query .= " inner join sucursal b on (a.id_sucursal=b.id_sucursal) ";
         $query .= " inner join categoria c on (a.id_categoria=c.id_categoria) ";
@@ -113,7 +113,7 @@ class bodega_crud
     public function buscar_sucursal($nombre)
     {
         $query = "";
-        $query .= "select a.id_producto, a.codigo,a.nombre,a.id_sucursal,b.nombre_sucursal,c.nombre_categoria,a.id_categoria,a.cantidad,a.precio,a.estado ";
+        $query .= "select a.id_producto, a.codigo,a.nombre,a.id_sucursal,b.nombre_sucursal,c.nombre_categoria,a.id_categoria,a.cantidad,a.precio,a.estado,a.descripcion ";
         $query .= " from producto a ";
         $query .= " inner join sucursal b on (a.id_sucursal=b.id_sucursal) ";
         $query .= " inner join categoria c on (a.id_categoria=c.id_categoria) ";
@@ -129,7 +129,7 @@ class bodega_crud
     public function listar_productos()
     {
         $query = "";
-        $query .= "select a.id_producto, a.codigo,a.nombre,a.id_sucursal,b.nombre_sucursal,c.nombre_categoria,a.id_categoria,a.cantidad,a.precio,a.estado ";
+        $query .= "select a.id_producto, a.codigo,a.nombre,a.id_sucursal,b.nombre_sucursal,c.nombre_categoria,a.id_categoria,a.cantidad,a.precio,a.estado,a.descripcion ";
         $query .= " from producto a ";
         $query .= " inner join sucursal b on (a.id_sucursal=b.id_sucursal) ";
         $query .= " inner join categoria c on (a.id_categoria=c.id_categoria) ";

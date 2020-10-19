@@ -5,7 +5,7 @@ include 'view/plantillas/top.php';
 <body>
   <h1>Actualizar Producto</h1>
   <p>Permite actualizar nombre, precio y descripción del producto.</p>
-</body>
+  <p><?= $this->modelo->mensaje ?></p>
 
 <div class="row">
   <div class="col-12">
@@ -26,7 +26,7 @@ include 'view/plantillas/top.php';
             <div class="form-group row">
               <label class="col-md-4 control-label" for="id">ID:</label>  
               <div class="col-md-4">
-              <input value="<?= $this->modelo->producto->id ?>" id="id" name="id" type="text" placeholder="id auto incrementable" class="form-control input-md" required="">
+              <input value="<?= $this->modelo->producto->id ?>" id="id" name="id" type="text" placeholder="id auto incrementable" class="form-control input-md" required="" readonly="">
               <span class="help-block">Id auto incrementable</span>  
               </div>
             </div>
@@ -35,7 +35,7 @@ include 'view/plantillas/top.php';
             <div class="form-group row">
               <label class="col-md-4 control-label" for="textinput">NOMBRE:</label>  
               <div class="col-md-4">
-              <input value="<?= $this->modelo->producto->nombre ?>" id="textinput" name="textinput" type="text" placeholder="Nombre del producto" class="form-control input-md" required="">
+              <input value="<?= $this->modelo->producto->nombre ?>" id="nombre" name="nombre" type="text" placeholder="Nombre del producto" class="form-control input-md" required="">
               <span class="help-block">Nombre del producto</span>  
               </div>
             </div>
@@ -60,7 +60,7 @@ include 'view/plantillas/top.php';
 
             <div class="form-group row justify-content-center h-100">
                 <div class="col-sm-10 align-self-center text-center">
-                    <button type="submit" class="btn btn-success">Agregar</button>
+                    <button type="submit" class="btn btn-success">Actualizar</button>
                     <a href="?" class="btn btn-danger">Cancelar</a>
                 </div>
             </div>
