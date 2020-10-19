@@ -1,6 +1,6 @@
 <?php
 print "<!-- Top -->";
-include 'plantilla.top.php';
+include 'view/plantillas/top.php';
 ?>
 <body>
   <h1>Actualizar Producto</h1>
@@ -16,7 +16,7 @@ include 'plantilla.top.php';
           <!-- /.card-header -->
           <div class="card-body table-responsive p-10">
 
-          <form class="form-horizontal" method="POST" action="controller/delete_controller.php">
+          <form class="form-horizontal" method="POST" action="?path=update&metodo=grabar">
             <fieldset>
 
             <!-- Form Name -->
@@ -61,7 +61,7 @@ include 'plantilla.top.php';
             <div class="form-group row justify-content-center h-100">
                 <div class="col-sm-10 align-self-center text-center">
                     <button type="submit" class="btn btn-success">Agregar</button>
-                    <a href="{{ route('search') }}" class="btn btn-danger">Cancelar</a>
+                    <a href="?" class="btn btn-danger">Cancelar</a>
                 </div>
             </div>
 
@@ -76,5 +76,5 @@ include 'plantilla.top.php';
 </div>
 <?php
 print "<!-- Bottom -->";
-include 'plantilla.bottom.php';
+include 'view/plantillas/bottom.php';
 ?>

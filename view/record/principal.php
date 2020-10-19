@@ -1,6 +1,6 @@
 <?php
 echo "<!-- Top -->";
-require_once 'plantilla.top.php';
+require_once 'view/plantillas/top.php';
 ?>
 
 <div>
@@ -9,16 +9,6 @@ require_once 'plantilla.top.php';
 único del producto, nombre del producto, categoría, sucursal en la que se
 encuentra (Suponga 3), y descripción, cantidad, y precio venta.</p>
 </div>
-
-<?php
-
-    require_once 'model/bodega_crud.php';
-
-    $bodega_crud =  new bodega_crud();
-    $categorias = $bodega_crud->listar_categorias();
-    $sucursales = $bodega_crud->listar_sucursales();
-?>
-
 <div class="row">
   <div class="col-12">
       <div class="card">
@@ -28,7 +18,7 @@ encuentra (Suponga 3), y descripción, cantidad, y precio venta.</p>
           <!-- /.card-header -->
           <div class="card-body table-responsive p-10">
 
-          <form class="form-horizontal" onsubmit="return validaCampos(event)" method="POST" action="controller/record_controller.php">
+          <form class="form-horizontal" onsubmit="return validaCampos(event)" method="POST" action="?path=record&metodo=grabar">
             <fieldset>
 
             <!-- Form Name -->
@@ -128,5 +118,5 @@ encuentra (Suponga 3), y descripción, cantidad, y precio venta.</p>
 <script type="text/javascript" src="js/recordValidaciones.js"></script>
 <?php
 echo "<!-- Bottom -->";
-require_once 'plantilla.bottom.php';
+require_once 'view/plantillas/bottom.php';
 ?>

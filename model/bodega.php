@@ -1,6 +1,6 @@
 <?php
 
-require_once "conexion.php"; // copiar el codigo de la clase en el codigo actual.
+require_once "model/bd.php"; // copiar el codigo de la clase en el codigo actual.
 
 class bodega_crud
 {
@@ -8,8 +8,6 @@ class bodega_crud
     public function leer_producto($id) // parametros de la funcion.
     {
         $query = "select * from producto where id_producto=$id";
-
-        $link = conexion::conecta(); // llamamos a un metodo de otro metodo, SELF, llama a un metodo dentro de la misma clase.
         
         $link = conexion::conecta();
         $resultado = mysqli_query($link, $query) or die(mysqli_error($link));
@@ -18,10 +16,25 @@ class bodega_crud
         return $resultado;
     }
 
-    public function eliminar_producto($id) // parametros de la funcion.
+    public function desactivar_producto($id) // parametros de la funcion.
     {
         $query = "update producto set estado='X' where id_producto=$id";
-        $link = conexion::conecta(); // llamamos a un metodo de otro metodo, SELF, llama a un metodo dentro de la misma clase.
+        $link = conexion::conecta();
+
+        // Nombre de clase cuando es otra clase.
+        mysqli_query($link, $query) or die(mysqli_error($link));
+
+        $nfilas = mysqli_affected_rows($link);
+
+        return $nfilas; // devuelve el numero de filas insertadas.
+
+        mysqli_close($link);
+    }
+
+    public function eliminar_producto($id) // parametros de la funcion.
+    {
+        $query = "delete from producto where id_producto=$id";
+        $link = conexion::conecta();
 
         // Nombre de clase cuando es otra clase.
         mysqli_query($link, $query) or die(mysqli_error($link));

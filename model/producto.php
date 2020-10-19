@@ -11,7 +11,10 @@ class producto {
     public $cantidad;
     public $precio;
 
-    function __construct($id,$codigo,$nombre,$categoria,$sucursal,$descripcion,$cantidad,$precio) {
+    function __construct() {
+    }
+    
+    function init($id,$codigo,$nombre,$categoria,$sucursal,$descripcion,$cantidad,$precio) {
         $this->id=$id;
         $this->codigo=$codigo;
         $this->nombre=$nombre;

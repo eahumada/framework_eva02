@@ -1,6 +1,6 @@
 <?php
 print "<!-- Top -->";
-include 'plantilla.top.php';
+include 'view/plantillas/top.php';
 ?>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -9,47 +9,16 @@ include 'plantilla.top.php';
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Consultar Productos</h1>
-                        <p>Permite consultar productos por código, nombre, y opcionalmente la sucursal.</p>                        
+                        <h1>Dar de baja Producto</h1>
+                        <p>
+                        De acuerdo a los requerimientos del software, permite borrar registros ya sea de toda la base de datos o por sucursal,
+                        Es posible realizar un borrado lógico (Actualizando el estado del producto, activo ' ' o inactivo 'X') 
+                        o dado de baja de forma definitiva eliminandolo de la base de datos. Filtrado por código y/o sucursal.
+                        </p>                        
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-
-<?php
-
-require_once 'model/bodega_crud.php';
-
-$criterio="";
-$query="";
-
-if(!empty($_POST['criterio'])){
-    $criterio = $_POST['criterio'];
-}
-
-if(!empty($_POST['query'])){
-    $query = $_POST['query'];
-}
-
-$bodega_crud =  new bodega_crud();
-
-if($criterio=="") {
-    $productos = $bodega_crud->listar_productos();
-} else if($criterio=="codigo") {
-    $productos = $bodega_crud->buscar_codigo($query);
-} else if($criterio=="nombre") {
-    $productos = $bodega_crud->buscar_nombre($query);
-} else if($criterio=="sucursal") {
-    $productos = $bodega_crud->buscar_sucursal($query);
-}
-
-echo "Criterio:";
-echo $criterio;
-echo "&nbsp; Consulta:";
-echo $query;
-
-?>        
-
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
@@ -59,31 +28,6 @@ echo $query;
                     <div class="col-12">
                         <div class="card"> 
                             <div class="card-header">
-                            
-                                <form class="form-horizontal" method="POST" action="search.php">
-
-                                    <div class="input-group-append">
-                                        <div class="col-sm-4">
-                                            <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <input name="criterio" value="codigo" <?php echo $criterio=="codigo"?"checked":""; ?> type="checkbox">codigo</input>
-                                                &nbsp;
-                                                <input name="criterio" value="nombre" <?php echo $criterio=="nombre"?"checked":""; ?> type="checkbox">nombre</input>
-                                                &nbsp;
-                                                <input name="criterio" value="sucursal" <?php echo $criterio=="sucursal"?"checked":""; ?> type="checkbox">sucursal</input>
-                                                &nbsp;
-                                            </div>
-                                            </div>
-                                        </div>
-                                        <input type="text" name="query" class="form-control float-right"
-                                            placeholder="Buscar" value="<?php echo $query; ?>" >
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i>Buscar</button>
-                                        </div>
-                                    </div>
-
-                                </form>
-
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body table-responsive p-0">
@@ -121,13 +65,32 @@ echo $query;
                                     ?>
                                     </tbody>
                                 </table>
+
                             </div>
                             <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
                     </div>
+
                 </div>
                 <!-- /.row -->
+
+                <div class="row">
+                  <div class="col-12">
+                    <div class="card"> 
+                        <div class="card-header">
+                          <div class="form-group row justify-content-center h-100">
+                            <div class="col-sm-10 align-self-center text-center">
+                                <a href="?path=delete&metodo=eliminar&accion=desactivar&criterio=<?php echo $criterio ?>&query=<?php echo $query ?>" class="btn btn-success">Dar de baja</a>
+                                <a href="?path=delete&metodo=eliminar&accion=eliminar&criterio=<?php echo $criterio ?>&query=<?php echo $query ?>" class="btn btn-danger">Eliminar</a>
+                                <a href="delete.php" class="btn btn-primary">Cancelar</a>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->
@@ -135,7 +98,9 @@ echo $query;
 
 <?php
 print "<!-- Bottom -->";
-include 'plantilla.bottom.php';
+include 'view/plantillas/bottom.php';
 ?>
+
+
 
 
