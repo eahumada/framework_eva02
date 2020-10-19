@@ -26,7 +26,7 @@ include 'view/plantillas/top.php';
             <div class="form-group row">
               <label class="col-md-4 control-label" for="id">ID:</label>  
               <div class="col-md-4">
-              <input id="id" name="id" type="text" placeholder="id auto incrementable" class="form-control input-md" required="">
+              <input value="<?= $this->modelo->producto->id ?>" id="id" name="id" type="text" placeholder="id auto incrementable" class="form-control input-md" required="">
               <span class="help-block">Id auto incrementable</span>  
               </div>
             </div>
@@ -35,7 +35,7 @@ include 'view/plantillas/top.php';
             <div class="form-group row">
               <label class="col-md-4 control-label" for="textinput">NOMBRE:</label>  
               <div class="col-md-4">
-              <input id="textinput" name="textinput" type="text" placeholder="Nombre del producto" class="form-control input-md" required="">
+              <input value="<?= $this->modelo->producto->nombre ?>" id="textinput" name="textinput" type="text" placeholder="Nombre del producto" class="form-control input-md" required="">
               <span class="help-block">Nombre del producto</span>  
               </div>
             </div>
@@ -44,7 +44,7 @@ include 'view/plantillas/top.php';
             <div class="form-group row">
               <label class="col-md-4 control-label" for="descripcion">DESCRIPCION:</label>  
               <div class="col-md-4">
-              <input id="descripcion" name="descripcion" type="text" placeholder="Descripcion del producto" class="form-control input-md">
+              <input value="<?= $this->modelo->producto->descripcion ?>" id="descripcion" name="descripcion" type="text" placeholder="Descripcion del producto" class="form-control input-md">
               <span class="help-block">Descripcion del producto</span>  
               </div>
             </div>
@@ -53,7 +53,7 @@ include 'view/plantillas/top.php';
             <div class="form-group row">
               <label class="col-md-4 control-label" for="precio">PRECIO:</label>  
               <div class="col-md-4">
-              <input id="precio" name="precio" type="text" placeholder="Precio de venta" class="form-control input-md">
+              <input value="<?= $this->modelo->producto->precio ?>" id="precio" name="precio" type="text" placeholder="Precio de venta" class="form-control input-md">
               <span class="help-block">Precio de venta</span>  
               </div>
             </div>

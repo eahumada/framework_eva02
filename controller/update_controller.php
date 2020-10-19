@@ -21,6 +21,38 @@ Class update_controller {
         $categorias = $bodega_crud->listar_categorias();
         $sucursales = $bodega_crud->listar_sucursales();
 
+        if(!empty($_GET['id'])){
+            $this->modelo->mensaje = 'Debe ingresar codigo';
+            $id = $_GET['id'];
+            $productos = $bodega_crud->leer_producto($id);
+            foreach($productos as $row) {
+                $id_producto=$row['id_producto'];
+                $codigo=$row['codigo'];
+                $nombre=$row['nombre'];
+                $id_categoria=$row['id_categoria'];
+                $id_sucursal=$row['id_sucursal'];
+                $descripcion=$row['descripcion'];
+                $cantidad=$row['cantidad'];
+                $precio=$row['precio'];                    
+
+                $producto  =new Producto();
+                $producto->init(
+                    $id_producto,
+                    $codigo,
+                    $nombre,
+                    $id_categoria,
+                    $id_sucursal,
+                    $descripcion,
+                    $cantidad,
+                    $precio               
+                );
+
+                $this->modelo->producto=$producto;
+                
+            }
+        }
+
+
         require_once "view/update/principal.php";
     }
 

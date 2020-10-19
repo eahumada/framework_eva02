@@ -69,8 +69,9 @@ require_once 'view/plantillas/top.php';
                                     <tbody>
                                     <?php
                                         foreach ($this->modelo->productos as $row) {
+                                            $id = $row['id_producto'];
                                             echo("<tr>");
-                                            echo("<td>".$row['id_producto']."</td>");
+                                            echo("<td>".$id."</td>");
                                             echo("<td>".$row['codigo']."</td>");
                                             echo("<td>".$row['nombre']."</td>");
                                             echo("<td>".$row['nombre_categoria']."</td>");
@@ -79,7 +80,7 @@ require_once 'view/plantillas/top.php';
                                             echo("<td>".$row['precio']."</td>");
                                             echo("<td>".$row['estado']."</td>");
                                             echo("<td>");
-                                            echo("<a class='btn btn-success' href='update.php'>editar</a>");
+                                            echo("<a class='btn btn-success' href='?path=update&id=".$id."'>editar</a>");
                                             echo("</td>");
                                             echo("</tr>");
                                         }
