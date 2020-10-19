@@ -48,7 +48,7 @@ class bodega_crud
 
     public function insertar_producto($producto) // parametros de la funcion.
     {
-        $query = "insert into producto(codigo,nombre,id_sucursal,id_categoria,cantidad,precio,descripcion) values ('$producto->codigo','$producto->nombre',$producto->id_sucursal,$producto->id_categoria,$producto->cantidad,$producto->precio,$producto->descripcion)";
+        $query = "insert into producto(codigo,nombre,id_sucursal,id_categoria,cantidad,precio,descripcion) values ('$producto->codigo','$producto->nombre',$producto->id_sucursal,$producto->id_categoria,$producto->cantidad,$producto->precio,'$producto->descripcion')";
         $link = conexion::conecta(); // llamamos a un metodo de otro metodo, SELF, llama a un metodo dentro de la misma clase.
         // Nombre de clase cuando es otra clase.
         mysqli_query($link, $query) or die(mysqli_error($link));
